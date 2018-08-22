@@ -1,0 +1,32 @@
+<template name = "alljobs">
+	<a class="btn btn-info" href="/jobs"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;&nbsp;Add New Job</a>
+	<div class="page-header clearfix">
+    <h4 class="pull-left">Jobs</h4>
+    <div class="pull-right">
+      {{> EasySearch.Input index=alljobs attributes=attributes}}
+    </div>
+	</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+		<th>Job No.</th>
+		<th>Port</th>
+		<th>Importer Name</th>
+		<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+	{{#if Template.subscriptionsReady}}
+		{{#EasySearch.Each index=alljobs}}
+			{{> rowjobs}}
+		{{/EasySearch.Each}}
+{{> EasySearch.LoadMore index=alljobs content="Load more content"}}
+		{{else}}
+		<p>Loading...</p>
+		{{/if}}
+
+	</tbody>
+</table>
+</template>

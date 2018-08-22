@@ -1,0 +1,116 @@
+<template name = "searchshippingmaster">
+{{> search}}
+<div class="page-header clearfix">
+  <h4 class="pull-left">Search ShippingCo/Telephone/Email</h4>
+  <div class="pull-right">
+    {{> EasySearch.Input index=shippingIndex attributes=attributes}}
+  </div>
+</div>
+    <ul class="list-group">
+        {{#EasySearch.Each index=shippingIndex }}
+            <div class="panel-group">
+  				<div class="panel panel-default">
+    				<div class="panel-heading">
+      					<h4 class="panel-title"><a data-toggle="collapse" href="#{{_id}}">{{ScoName}} - {{ScoTelephone}} - {{ScoEmail}}</a><span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true" id="btnUpdateShipping" style="cursor:pointer"></span></h4>
+      				</div>
+      				<div id="{{_id}}" class="panel-collapse collapse">
+            			<li class="list-group-item">Location: {{ScoLocated}}</li>
+                        <li class="list-group-item">Address: {{ScoAddress}}</li>
+            			<li class="list-group-item">Mobile: {{ScoMobile}}</li>
+                        <li class="list-group-item">Tel 2: {{ScoTelephone2}}</li>
+                        <li class="list-group-item">Tel 3: {{ScoTelephone3}}</li>
+                        <li class="list-group-item">Tel 4: {{ScoTelephone4}}</li>
+            			<li class="list-group-item">Bank Name: {{ScoBankName}}</li>
+            			<li class="list-group-item">Bank Branch: {{ScoBankBranch}}</li>
+            			<li class="list-group-item">
+            				Account No: {{ScoAcNo}}
+            			</li>
+            			<li class="list-group-item">
+            				Account Type: {{ScoAccountType}}
+            			</li>
+            			<li class="list-group-item">
+            				IFSC Code: {{ScoIfsc}}
+            			</li>
+            			<li class="list-group-item">
+            				Working Saturday?: {{#if WorkingSat}}
+								<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+            			<li class="list-group-item">
+            				Rs. 100 Bond: {{#if Bond}}
+								<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+                  <li class="list-group-item">
+                      Rs. 200 Bond: {{#if Bond200}}
+                          <i class="fa fa-check"></i>
+                      {{else}}
+                          <i class="fa fa-times"></i>
+                      {{/if}}
+                  </li>
+                        <li class="list-group-item">
+                            Rs. 500 Bond: {{#if Bond2}}
+                                <i class="fa fa-check"></i>
+                            {{else}}
+                                <i class="fa fa-times"></i>
+                            {{/if}}
+                        </li>
+            			<li class="list-group-item">
+            				Letter Head: {{#if LetterHead}}
+            				<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+            			<li class="list-group-item">
+            				Insurance: {{#if Insurance}}
+            				<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+            			<li class="list-group-item">
+            				Blank Cheque: {{#if BlackCheque}}
+            				<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+            			<li class="list-group-item">
+            				Bank Verification: {{#if BankVer}}
+            				<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+            			<li class="list-group-item">
+            				NOC Letter: {{#if NOCLetter}}
+            				<i class="fa fa-check"></i>
+            				{{else}}
+								<i class="fa fa-times"></i>
+            				{{/if}}
+            			</li>
+                  <li class="list-group-item">
+                    Additional Details:
+                    {{#each MorePeople}}
+                      <li class="list-group-item">Name: {{Name}}</li>
+                      <li class="list-group-item">Email: {{EmailId}}</li>
+                      <li class="list-group-item">Mobile: {{MobileNo}}</li>
+                    {{/each}}
+                  </li>
+
+        			</div>
+        		</div>
+        	</div>
+        {{/EasySearch.Each}}
+    </ul>
+    {{> EasySearch.LoadMore index=shippingIndex}}
+
+  {{#EasySearch.IfNoResults index=shippingIndex}}
+    <div class="no-results">No results found!</div>
+  {{/EasySearch.IfNoResults}}
+</template>
